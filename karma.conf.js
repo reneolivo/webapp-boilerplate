@@ -2,7 +2,7 @@ const webpackConf = require('./webpack.config');
 
 module.exports = function(conf) {
     conf.set({
-       browsers: ['PhantomJS'],
+       browsers: ['Chrome'],
        frameworks: ['jasmine'],
        reporters: ['spec'],
        specReporter: {
