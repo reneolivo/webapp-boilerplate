@@ -1,6 +1,7 @@
 {
   "name": "webapp-boilerplate",
   "scripts": {
+    "test": "karma start",
     "test:watch": "karma start --auto-watch --no-single-run"
   },
   "devDependencies": {

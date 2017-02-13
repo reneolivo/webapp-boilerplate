@@ -9,10 +9,10 @@ module.exports = function(conf) {
            suppressSkipped: true
        },
        files: [
-           'src/**/*.specs.js'
+           'src/**/*.spec.js'
        ],
        preprocessors: {
-           'src/**/*.specs.js': [ 'webpack', 'sourcemap' ]
+           'src/**/*.spec.js': [ 'webpack', 'sourcemap' ]
        },
        port: process.env.PORT,
        colors: true,
