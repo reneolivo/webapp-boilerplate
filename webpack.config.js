@@ -1,30 +1,51 @@
+'use strict';
+
 const webpack = require('webpack');
+const Extract = require('extract-text-webpack-plugin');
 const path = require('path');
 
 const JSDIR = path.join(__dirname, 'src');
 const JSOUT = path.join(__dirname, 'dist');
 
+const extractCss = new Extract('styles.css');
+let cssLoader;
+
+if (process.env.ENV === 'production') {
+  cssLoader = extractCss.extract([
+    'css-loader',
+    'sass-loader'
+  ]);
+} else {
+  cssLoader = 'style-loader!css-loader!sass-loader';
+}
+
+
 module.exports = {
-    //debug: true,
-    entry: path.join(JSDIR, 'app.js'),
-    output: {
-        path: JSOUT,
-        filename: 'bundle.js'
-    },
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/
-            }
-        ]
-    },
-    plugins: [
-        new webpack.NoEmitOnErrorsPlugin()
-    ],
-    stats: {
-        colors: true
-    },
-    devtool: 'inline-source-map'
+  entry: path.join(JSDIR, 'app.js'),
+  output: {
+    path: JSOUT,
+    filename: 'bundle.js'
+  },
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        loader: cssLoader,
+        exclude: /node_modules/
+      }
+    ]
+  },
+  plugins: [
+    new webpack.NoEmitOnErrorsPlugin(),
+    extractCss
+  ],
+  stats: {
+    colors: true
+  },
+  devtool: 'inline-source-map'
 };
