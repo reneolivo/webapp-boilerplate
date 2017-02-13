@@ -1,5 +1,11 @@
 body {
   background: #F5F5F5;
   color: #444;
-  font-family: helvetica;
+
+  h1 {
+    background: url('../images/logo.png') 0 -20px no-repeat;
+    padding-left: 140px;
+    padding-top: 1em;
+    min-height: 100px;
+  }
 }

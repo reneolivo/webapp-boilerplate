@@ -37,7 +37,28 @@ module.exports = {
         test: /\.scss$/,
         loader: cssLoader,
         exclude: /node_modules/
-      }
+      },
+      {
+        test: /\.(ttf|eot|woff2?)(\?v=.*)?$/,
+        loader: 'file-loader',
+        query: {
+          name: '../fonts/[name].[ext]'
+        }
+      },
+      {
+        test: /fonts\/.*\.svg(\?v=.*)?$/,
+        loader: 'file-loader',
+        query: {
+          name: '../fonts/[name].[ext]'
+        }
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
+        loader: 'file-loader',
+        query: {
+          name: '../images/[name].[ext]'
+        }
+      },
     ]
   },
   plugins: [
