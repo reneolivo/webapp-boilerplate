@@ -27,6 +27,7 @@
     "karma-webpack": "^2.0.2",
     "live-server": "^1.1.0",
     "node-sass": "^4.5.0",
+    "pm2": "^2.4.0",
     "sass-loader": "^5.0.1",
     "style-loader": "^0.13.1",
     "webpack": "^2.2.1"
