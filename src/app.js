@@ -1,17 +1,9 @@
 import './styles/style.scss';
-import jQuery from 'jquery';
+import $ from 'jquery';
 import template from './app.pug';
-import articles from './articles';
+import flights from './flights.js';
 
-export default class App {
-  name = 'Sample App';
 
-  static init() {
-    const body = jQuery('body');
-    const html = template({ articles: articles });
+const html = template({ flights: flights });
 
-    body.append(html);
-  }
-}
-
-global.App = App;
+$('body').html(html);

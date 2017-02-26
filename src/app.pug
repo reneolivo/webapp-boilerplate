@@ -1,4 +1,30 @@
-ul#articles
-  each art in articles
-    li
-      a(href=art.link)= art.title
+for flight in flights
+  <table class="flight">
+    <thead>
+      <tr>
+        <th colspan="2">
+          h3= flight.name
+        </th>
+      </tr>
+      <tr>
+        <th>From</th>
+        <th>To</th>
+      </tr>
+      <tr>
+        <td>SDQ</td>
+        <td>FLA</td>
+      </tr>
+      <tr>
+        <th colspan="2">
+          Passengers
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      for passenger in flight.passengers
+        <tr>
+          td= passenger.firstName
+          td= passenger.lastName
+        </tr>
+    </tbody>
+  </table>
