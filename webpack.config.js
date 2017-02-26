@@ -59,6 +59,11 @@ module.exports = {
           name: '../images/[name].[ext]'
         }
       },
+      {
+        test: /\.pug$/,
+        loader: 'pug-loader',
+        exclude: /node_modules/
+      }
     ]
   },
   plugins: [

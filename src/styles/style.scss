@@ -9,3 +9,19 @@ body {
     min-height: 100px;
   }
 }
+
+ul#articles {
+  li {
+    line-height: 1.5em;
+
+    a {
+      font-size: 0.8em;
+      color: orange;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
