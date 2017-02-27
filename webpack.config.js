@@ -9,14 +9,24 @@ const JSOUT = path.join(__dirname, 'dist');
 
 const extractCss = new Extract('styles.css');
 let cssLoader;
+let sourcemap;
+let plugins = [
+  extractCss,
+  //new webpack.NoEmitOnErrorsPlugin(),
+];
 
 if (process.env.ENV === 'production') {
   cssLoader = extractCss.extract([
     'css-loader',
     'sass-loader'
   ]);
+  sourcemap = 'source-map';
+  plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: { warnings: false }
+  }))
 } else {
   cssLoader = 'style-loader!css-loader!sass-loader';
+  sourcemap = 'inline-source-map';
 }
 
 
@@ -63,15 +73,16 @@ module.exports = {
         test: /\.pug$/,
         loader: 'pug-loader',
         exclude: /node_modules/
+      },
+      {
+        test: require.resolve('jquery'),
+        loader: 'expose-loader?jQuery!expose-loader?$'
       }
     ]
   },
-  plugins: [
-    new webpack.NoEmitOnErrorsPlugin(),
-    extractCss
-  ],
+  plugins: plugins,
   stats: {
     colors: true
   },
-  devtool: 'inline-source-map'
+  devtool: sourcemap
 };
